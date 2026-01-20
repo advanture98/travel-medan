@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Medan - Portal Informasi Wisata dan Perjalanan di Medan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset dan variabel CSS */
+        :root {
+            --primary: #2a9d8f;
+            --secondary: #e76f51;
+            --accent: #e9c46a;
+            --light: #f8f9fa;
+            --dark: #264653;
+            --gray: #6c757d;
+            --transition: all 0.3s ease;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #f5f7fa;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #21867a;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #d65c3e;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            margin: 50px 0 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 1.9rem;
+            color: var(--dark);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 3px;
+            background-color: var(--primary);
+            bottom: -3px;
+            left: 0;
+        }
+        
+        .tag {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+        
+        .tag-wisata {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .tag-kuliner {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .tag-budaya {
+            background-color: #e9c46a;
+            color: var(--dark);
+        }
+        
+        .tag-akomodasi {
+            background-color: #457b9d;
+            color: white;
+        }
+        
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .top-bar {
+            background-color: var(--dark);
+            color: white;
+            padding: 10px 0;
+            font-size: 0.9rem;
+        }
+        
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .top-bar i {
+            color: var(--accent);
+            margin-right: 8px;
+        }
+        
+        .date-time {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .header-main {
+            padding: 20px 0;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .logo-text h1 {
+            font-size: 2.2rem;
+            color: var(--dark);
+            line-height: 1.1;
+        }
+        
+        .logo-text p {
+            font-size: 0.95rem;
+            color: var(--gray);
+            font-style: italic;
+        }
+        
+        .header-cta {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 10px;
+        }
+        
+        .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        /* Navigation */
+        .main-nav {
+            background-color: var(--primary);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-links {
+            display: flex;
+        }
+        
+        .nav-links a {
+            color: white;
+            padding: 18px 22px;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-block;
+            position: relative;
+        }
+        
+        .nav-links a:hover, .nav-links .active {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            background-color: var(--accent);
+            bottom: 0;
+            left: 22px;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after, .nav-links .active::after {
+            width: calc(100% - 44px);
+        }
+        
+        .nav-tools {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .search-box {
+            display: flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            padding: 8px 15px;
+        }
+        
+        .search-box input {
+            background: transparent;
+            border: none;
+            color: white;
+            width: 200px;
+            padding: 5px;
+            outline: none;
+        }
+        
+        .search-box input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .search-box i {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .mobile-toggle {
+            display: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1513326738677-b964603b136d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 120px 0;
+            margin-bottom: 40px;
+        }
+        
+        .hero-content {
+            max-width: 700px;
+        }
+        
+        .hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        /* Quick Links */
+        .quick-links {
+            background-color: white;
+            padding: 30px 0;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow);
+        }
+        
+        .quick-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+        }
+        
+        .quick-link-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            padding: 25px 15px;
+            background-color: var(--light);
+            border-radius: 8px;
+            transition: var(--transition);
+            text-align: center;
+        }
+        
+        .quick-link-item:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-5px);
+        }
+        
+        .quick-link-item i {
+            font-size: 2.2rem;
+            color: var(--primary);
+        }
+        
+        .quick-link-item:hover i {
+            color: white;
+        }
+        
+        /* Featured Destinations */
+        .featured-destinations {
+            margin-bottom: 60px;
+        }
+        
+        .destinations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .destination-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .destination-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .destination-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+        
+        .destination-content {
+            padding: 25px;
+        }
+        
+        .destination-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+        
+        .destination-content p {
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+        
+        .destination-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--gray);
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+        
+        .destination-meta i {
+            color: var(--accent);
+            margin-right: 5px;
+        }
+        
+        /* Medan Culture & Food */
+        .culture-food {
+            background-color: white;
+            padding: 60px 0;
+            margin: 60px 0;
+            border-top: 5px solid var(--accent);
+            border-bottom: 5px solid var(--accent);
+        }
+        
+        .culture-food-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .culture-card, .food-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .culture-card:hover, .food-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .culture-img, .food-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .culture-content, .food-content {
+            padding: 25px;
+        }
+        
+        .culture-content h3, .food-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .culture-content p, .food-content p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+        
+        /* Travel Tips */
+        .travel-tips {
+            margin-bottom: 60px;
+        }
+        
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .tip-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .tip-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .tip-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .tip-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .tip-card p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+        
+        /* Newsletter */
+        .newsletter {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            padding: 60px 0;
+            margin: 60px 0;
+            text-align: center;
+        }
+        
+        .newsletter-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .newsletter h2 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+        
+        .newsletter p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 6px 0 0 6px;
+            outline: none;
+            font-size: 1rem;
+        }
+        
+        .newsletter-form button {
+            border-radius: 0 6px 6px 0;
+            border: none;
+            padding: 0 25px;
+            font-weight: 600;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        .footer-logo span {
+            color: var(--accent);
+        }
+        
+        .footer-about p {
+            color: #bbb;
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #3a5a6d;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-links h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-links h3::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background-color: var(--accent);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-links ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links ul li a {
+            color: #bbb;
+            transition: var(--transition);
+        }
+        
+        .footer-links ul li a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+        
+        .contact-info-footer li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 15px;
+            color: #bbb;
+        }
+        
+        .contact-info-footer i {
+            color: var(--accent);
+            margin-top: 4px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #3a5a6d;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.7rem;
+            }
+            
+            .header-cta {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary);
+                flex-direction: column;
+                box-shadow: var(--shadow);
+                z-index: 100;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .search-box {
+                display: none;
+            }
+            
+            .hero {
+                padding: 80px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .newsletter-form input,
+            .newsletter-form button {
+                border-radius: 6px;
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.6rem;
+            }
+            
+            .logo-text h1 {
+                font-size: 1.8rem;
+            }
+            
+            .quick-links-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .top-bar .container {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+            
+            .date-time {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="top-bar">
+            <div class="container">
+                <span><i class="fas fa-map-marker-alt"></i> Medan, Sumatera Utara - Kota Terbesar ke-3 di Indonesia</span>
+                <div class="date-time">
+                    <span id="current-date"></span>
+                    <span id="current-time"></span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="header-main">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-plane"></i>
+                        </div>
+                        <div class="logo-text">
+                            <h1>Travel Medan</h1>
+                            <p>Portal Informasi Wisata dan Perjalanan di Medan</p>
+                        </div>
+                    </div>
+                    <div class="header-cta">
+                        <div class="contact-info">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>(061) 123-4567</span>
+                        </div>
+                        <a href="#newsletter" class="btn btn-secondary">Berlangganan Newsletter</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="main-nav">
+            <div class="container nav-container">
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#" class="active">Beranda</a></li>
+                    <li><a href="#destinasi">Destinasi Wisata</a></li>
+                    <li><a href="#kuliner">Kuliner Medan</a></li>
+                    <li><a href="#budaya">Budaya</a></li>
+                    <li><a href="#akomodasi">Akomodasi</a></li>
+                    <li><a href="#tips">Tips Perjalanan</a></li>
+                    <li><a href="#galeri">Galeri</a></li>
+                </ul>
+                
+                <div class="nav-tools">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Cari destinasi...">
+                    </div>
+                    <div class="mobile-toggle" id="mobile-toggle">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Jelajahi Keindahan dan Keunikan Kota Medan</h1>
+                <p>Temukan destinasi wisata menarik, kuliner lezat, budaya kaya, dan pengalaman tak terlupakan di kota terbesar di Sumatera ini.</p>
+                <div class="hero-buttons">
+                    <a href="#destinasi" class="btn">Jelajahi Destinasi</a>
+                    <a href="#kuliner" class="btn btn-outline">Kuliner Medan</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Links -->
+    <section class="quick-links">
+        <div class="container">
+            <div class="quick-links-grid">
+                <a href="#destinasi" class="quick-link-item">
+                    <i class="fas fa-landmark"></i>
+                    <span>Wisata Budaya</span>
+                </a>
+                <a href="#kuliner" class="quick-link-item">
+                    <i class="fas fa-utensils"></i>
+                    <span>Kuliner Khas</span>
+                </a>
+                <a href="#akomodasi" class="quick-link-item">
+                    <i class="fas fa-hotel"></i>
+                    <span>Hotel & Penginapan</span>
+                </a>
+                <a href="#transportasi" class="quick-link-item">
+                    <i class="fas fa-bus"></i>
+                    <span>Transportasi</span>
+                </a>
+                <a href="#belanja" class="quick-link-item">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span>Tempat Belanja</span>
+                </a>
+                <a href="#event" class="quick-link-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Event & Festival</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Destinations -->
+    <section class="featured-destinations" id="destinasi">
+        <div class="container">
+            <div class="section-title">
+                <h2>Destinasi Wisata Terpopuler</h2>
+            </div>
+            
+            <div class="destinations-grid">
+                <!-- Destination 1 -->
+                <div class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1594736797933-d0d5df276f39?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Istana Maimun" class="destination-img">
+                    <div class="destination-content">
+                        <span class="tag tag-wisata">Wisata Budaya</span>
+                        <h3>Istana Maimun</h3>
+                        <p>Istana megah peninggalan Kesultanan Deli yang menjadi ikon Kota Medan. Arsitektur bangunan perpaduan Melayu, Islam, dan Eropa.</p>
+                        <div class="destination-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Jl. Brigjend Katamso</span>
+                            <span><i class="fas fa-clock"></i> 08.00-17.00 WIB</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Destination 2 -->
+                <div class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1548013146-72479768bada?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Masjid Raya Al-Mashun" class="destination-img">
+                    <div class="destination-content">
+                        <span class="tag tag-wisata">Wisata Religi</span>
+                        <h3>Masjid Raya Al-Mashun</h3>
+                        <p>Masjid bersejarah dengan arsitektur bergaya Timur Tengah, India, dan Spanyol. Dibangun pada masa Kesultanan Deli tahun 1906.</p>
+                        <div class="destination-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Jl. Sisingamangaraja</span>
+                            <span><i class="fas fa-clock"></i> 24 Jam</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Destination 3 -->
+                <div class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Danau Toba" class="destination-img">
+                    <div class="destination-content">
+                        <span class="tag tag-wisata">Wisata Alam</span>
+                        <h3>Danau Toba</h3>
+                        <p>Danau vulkanik terbesar di dunia yang berjarak sekitar 4 jam dari Medan. Destinasi wajib dengan pemandangan alam yang memukau.</p>
+                        <div class="destination-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Kab. Samosir</span>
+                            <span><i class="fas fa-car"></i> 4 Jam dari Medan</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Medan Culture & Food -->
+    <section class="culture-food">
+        <div class="container">
+            <div class="culture-food-grid" id="kuliner">
+                <!-- Culture -->
+                <div class="culture-card">
+                    <img src="https://images.unsplash.com/photo-1548013146-72479768bada?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60" alt="Budaya Melayu Medan" class="culture-img">
+                    <div class="culture-content">
+                        <span class="tag tag-budaya">Budaya</span>
+                        <h3>Budaya Melayu Deli</h3>
+                        <p>Medan memiliki warisan budaya Melayu yang kaya dengan pengaruh Islam, India, dan China. Tarian tradisional, musik, dan kerajinan tangan menjadi daya tarik budaya kota ini.</p>
+                        <a href="#" class="btn btn-outline">Pelajari Budaya Medan</a>
+                    </div>
+                </div>
+                
+                <!-- Food -->
+                <div class="food-card">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Kuliner Medan" class="food-img">
+                    <div class="food-content">
+                        <span class="tag tag-kuliner">Kuliner</span>
+                        <h3>Kuliner Legendaris Medan</h3>
+                        <p>Medan terkenal dengan cita rasa kuliner yang kaya. Dari Soto Medan, Bika Ambon, Mie Gomak, hingga Durian Medan yang legendaris.</p>
+                        <a href="#" class="btn btn-secondary">Jelajahi Kuliner Medan</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Travel Tips -->
+    <section class="travel-tips" id="tips">
+        <div class="container">
+            <div class="section-title">
+                <h2>Tips Perjalanan ke Medan</h2>
+            </div>
+            
+            <div class="tips-grid">
+                <!-- Tip 1 -->
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-cloud-sun"></i>
+                    </div>
+                    <h3>Cuaca dan Musim</h3>
+                    <p>Medan memiliki iklim tropis dengan curah hujan tinggi. Bawa payung atau jas hujan, terutama di musim hujan (Oktober-Maret).</p>
+                    <a href="#" class="btn btn-outline">Baca Selengkapnya</a>
+                </div>
+                
+                <!-- Tip 2 -->
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h3>Bahasa dan Komunikasi</h3>
+                    <p>Bahasa Indonesia digunakan secara luas, dengan dialek Medan yang khas. Bahasa Melayu dan Batak juga banyak digunakan.</p>
+                    <a href="#" class="btn btn-outline">Baca Selengkapnya</a>
+                </div>
+                
+                <!-- Tip 3 -->
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <h3>Mata Uang & Biaya</h3>
+                    <p>Rupiah adalah mata uang resmi. Biaya hidup di Medan relatif terjangkau dibanding kota besar lainnya di Indonesia.</p>
+                    <a href="#" class="btn btn-outline">Baca Selengkapnya</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter" id="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Dapatkan Info Travel Terbaru</h2>
+                <p>Berlangganan newsletter kami untuk mendapatkan informasi terbaru tentang destinasi wisata, kuliner, event, dan promo travel di Medan.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Masukkan alamat email Anda" required>
+                    <button type="submit" class="btn btn-secondary">Berlangganan</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">Travel <span>Medan</span></div>
+                    <p>Portal informasi wisata dan perjalanan terlengkap di Kota Medan. Menyajikan panduan lengkap untuk menikmati keindahan dan kekayaan budaya kota terbesar di Sumatera.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Tautan Cepat</h3>
+                    <ul>
+                        <li><a href="#destinasi">Destinasi Wisata</a></li>
+                        <li><a href="#kuliner">Kuliner Medan</a></li>
+                        <li><a href="#budaya">Budaya & Tradisi</a></li>
+                        <li><a href="#akomodasi">Hotel & Akomodasi</a></li>
+                        <li><a href="#transportasi">Transportasi</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Layanan</h3>
+                    <ul>
+                        <li><a href="#">Panduan Perjalanan</a></li>
+                        <li><a href="#">Peta Interaktif</a></li>
+                        <li><a href="#">Booking Hotel</a></li>
+                        <li><a href="#">Tour Guide</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Kontak Kami</h3>
+                    <ul class="contact-info-footer">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Jl. Gatot Subroto No. 123, Medan, Sumatera Utara</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone-alt"></i>
+                            <span>(061) 123-4567</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@travelmedan.id</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Senin - Jumat: 08.00 - 17.00 WIB</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Travel Medan. Hak Cipta Dilindungi. | Dibuat dengan <i class="fas fa-heart" style="color: #e76f51;"></i> untuk Kota Medan</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Fungsi untuk menampilkan tanggal dan waktu terkini
+        function updateDateTime() {
+            const now = new Date();
+            
+            // Format tanggal
+            const optionsDate = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            };
+            const formattedDate = now.toLocaleDateString('id-ID', optionsDate);
+            document.getElementById('current-date').textContent = formattedDate;
+            
+            // Format waktu
+            const hours = now.getHours().toString().padStart(2
